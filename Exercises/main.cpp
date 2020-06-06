@@ -30,7 +30,7 @@ private:
    int age;
 };
 
-void main()
+void X_5_5()
 {
    // Section X.5
    // X.5[5]
@@ -39,11 +39,19 @@ void main()
    cout << "Enter name and age in that order:\n";
    cin >> name >> age;
    cout << "Name: " << name << "\nAge: " << age << '\n';
+}
 
+void X_5_6()
+{
    Person person;
    cout << "Enter name and age in that order:\n";
    cin >> person;
    cout << person;
+}
 
-   return;
+
+
+void main()
+{
+   X_5_6();
 }
