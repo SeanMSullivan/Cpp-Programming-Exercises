@@ -3,6 +3,9 @@
 // http://www.stroustrup.com/4thExercises.pdf
 //
 
+#include <algorithm>
+using std::sort;
+
 #include <iostream>
 using std::cin;
 using std::cout;
@@ -11,6 +14,10 @@ using std::ostream;
 
 #include <string>
 using std::string;
+
+#include <vector>
+using std::vector;
+
 
 class Person
 {
@@ -49,6 +56,20 @@ void X_5_6()
    cout << person;
 }
 
+void X_5_7()
+{
+   vector<int> nums = {5, 9, -1, 200, 0};
+
+   cout << "Unsorted:\n";
+   for (const auto num : nums)
+      cout << num << ' ';
+
+   sort(nums.begin(), nums.end());
+
+   cout << "\nSorted:\n";
+   for (const auto num : nums)
+      cout << num << ' ';
+}
 
 
 void main()
