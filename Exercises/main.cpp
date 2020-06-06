@@ -71,6 +71,20 @@ void X_5_7()
       cout << num << ' ';
 }
 
+void X_5_8()
+{
+   vector<string> names = {"Kant", "Plato", "Aristotle", "Kierkegard", "Hume"};
+
+   cout << "Unsorted:\n";
+   for (const auto name : names)
+      cout << name << ' ';
+
+   sort(names.begin(), names.end());
+
+   cout << "\nSorted:\n";
+   for (const auto name : names)
+      cout << name << ' ';
+}
 
 void main()
 {
