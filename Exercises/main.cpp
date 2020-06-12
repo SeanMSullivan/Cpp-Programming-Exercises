@@ -100,7 +100,21 @@ void X_5_9()
    outFile.close();
 }
 
+void X_5_10()
+{
+   ifstream inFile;
+   inFile.open("integers.txt");
+   if (inFile.is_open())
+      while (!inFile.eof())
+      {
+         int i;
+         inFile >> i;
+         cout << i << " ";
+      }
+   inFile.close();
+}
+
 int main()
 {
-   X_5_6();
+   X_5_10();
 }
