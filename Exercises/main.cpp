@@ -6,6 +6,9 @@
 #include <algorithm>
 using std::sort;
 
+#include <chrono>
+using std::chrono::seconds;
+
 #include <fstream>
 using std::ofstream;
 using std::ifstream;
@@ -18,6 +21,10 @@ using std::ostream;
 
 #include <string>
 using std::string;
+
+#include <thread>
+using std::thread;
+using std::this_thread::sleep_for;
 
 #include <vector>
 using std::vector;
@@ -114,7 +121,25 @@ void X_5_10()
    inFile.close();
 }
 
+void f(string s)
+{
+   cout << s;
+   sleep_for(seconds{1});
+}
+
+void X_6_2()
+{
+
+   for(int count = 0; count < 5; count++)
+   {
+      thread t1{f, "Hello "};
+      thread t2{f, "World\n"};
+      t1.join();
+      t2.join();
+   }
+}
+
 int main()
 {
-   X_5_10();
+   X_6_2();
 }
