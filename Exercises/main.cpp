@@ -6,6 +6,10 @@
 #include <algorithm>
 using std::sort;
 
+#include <fstream>
+using std::ofstream;
+using std::ifstream;
+
 #include <iostream>
 using std::cin;
 using std::cout;
@@ -86,7 +90,17 @@ void X_5_8()
       cout << name << ' ';
 }
 
-void main()
+void X_5_9()
+{
+   ofstream outFile;
+   outFile.open("integers.txt");
+   if (outFile.is_open())
+      for (int i = 0; i < 200; i++)
+         outFile << i << " ";
+   outFile.close();
+}
+
+int main()
 {
    X_5_6();
 }
