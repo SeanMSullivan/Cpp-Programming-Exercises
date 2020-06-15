@@ -19,6 +19,10 @@ using std::cout;
 using std::istream;
 using std::ostream;
 
+#include <mutex>
+using std::mutex;
+using std::unique_lock;
+
 #include <string>
 using std::string;
 
@@ -121,19 +125,28 @@ void X_5_10()
    inFile.close();
 }
 
-void f(string s)
+struct Acout
 {
-   cout << s;
-   sleep_for(seconds{1});
-}
+   string s;
+   mutex &m;
+   Acout(string s, mutex &m)
+      :s{s}, m{m} {}
+
+   void operator()()
+   {
+      unique_lock<mutex> lck{m};
+      cout << s;
+      sleep_for(seconds{1});
+   }
+};
 
 void X_6_2()
 {
-
-   for(int count = 0; count < 5; count++)
+   mutex m;
+   for (int count = 0; count < 5; count++)
    {
-      thread t1{f, "Hello "};
-      thread t2{f, "World\n"};
+      thread t1 {Acout {"Hello ", m}};
+      thread t2 {Acout {"World\n", m}};
       t1.join();
       t2.join();
    }
